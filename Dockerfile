@@ -2,6 +2,7 @@ FROM eclipse-temurin:17-jdk-alpine
 WORKDIR /app
 COPY notesapp/.mvn/ .mvn
 COPY notesapp/mvnw notesapp/pom.xml ./
+RUN chmod +x ./mvnw
 RUN ./mvnw dependency:go-offline
 COPY notesapp/src ./src
 RUN ./mvnw clean package -DskipTests
